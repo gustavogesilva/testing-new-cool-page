@@ -3,6 +3,13 @@ import { useEffect, useState } from "react";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  
+  const scrollToContent = () => {
+    const aboutSection = document.getElementById("about");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   useEffect(() => {
     setIsVisible(true);
@@ -25,15 +32,20 @@ const Hero = () => {
           <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
             Focused on industrial and retail value-add opportunities across the United States
           </p>
-          <button className="bg-white text-[#002A5C] px-8 py-3 rounded hover:bg-blue-100 transition-all font-medium">
+          <button 
+            className="bg-white text-[#002A5C] px-8 py-3 rounded hover:bg-blue-100 transition-all font-medium hover:shadow-lg transform hover:scale-105 duration-300"
+          >
             View Our Portfolio
           </button>
         </div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div 
+        onClick={scrollToContent}
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
+      >
         <svg
-          className="w-10 h-10 text-white"
+          className="w-10 h-10 text-white hover:text-blue-200 transition-colors duration-300"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

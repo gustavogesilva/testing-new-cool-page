@@ -1,4 +1,5 @@
 
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import About from "../components/About";
@@ -9,8 +10,19 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 
 const Index = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Add a small delay to make the page entrance animation noticeable
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="min-h-screen">
+    <div className={`min-h-screen transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
       <Navbar />
       <Hero />
       <About />
