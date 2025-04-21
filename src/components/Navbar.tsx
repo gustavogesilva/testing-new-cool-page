@@ -49,7 +49,7 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex justify-center items-center relative">
         <h1 className={`text-2xl font-light tracking-widest text-center transition-colors duration-300 ${isDarkBackground ? "text-white" : "text-[#002A5C]"}`} style={{
         fontFamily: "'Open Sans', sans-serif"
-      }}>ELDEN PARTNERS</h1>
+      }}>ELDEN</h1>
         
         <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={`absolute right-6 transition-colors duration-300 ${isDarkBackground ? "text-white" : "text-[#002A5C]"}`}>
           <Menu className="w-6 h-6" />
