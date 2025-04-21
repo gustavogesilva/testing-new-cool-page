@@ -5,13 +5,41 @@ import { Menu } from "lucide-react";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkBackground, setIsDarkBackground] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
+      
+      // Get the element at the current scroll position
+      const elements = document.elementsFromPoint(
+        window.innerWidth / 2,
+        70 // Navbar height approximate position
+      );
+      
+      // Find the first element with a background color
+      const backgroundElement = elements.find(el => {
+        const bgColor = window.getComputedStyle(el).backgroundColor;
+        return bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent';
+      });
+
+      if (backgroundElement) {
+        const backgroundColor = window.getComputedStyle(backgroundElement).backgroundColor;
+        // Parse RGB values
+        const rgb = backgroundColor.match(/\d+/g)?.map(Number);
+        if (rgb) {
+          // Calculate perceived brightness
+          // Using relative luminance formula: (0.299*R + 0.587*G + 0.114*B)
+          const brightness = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255;
+          setIsDarkBackground(brightness < 0.5);
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
+    // Initial check
+    handleScroll();
+    
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -33,9 +61,9 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex justify-center items-center relative">
         <h1 
-          className={`text-2xl font-light tracking-widest text-center ${
-            isScrolled ? "text-[#002A5C]" : "text-white"
-          } transition-colors duration-300`}
+          className={`text-2xl font-light tracking-widest text-center transition-colors duration-300 ${
+            isDarkBackground ? "text-white" : "text-[#002A5C]"
+          }`}
           style={{ fontFamily: "'Open Sans', sans-serif" }}
         >
           ELION PARTNERS
@@ -43,7 +71,9 @@ const Navbar = () => {
         
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`absolute right-6 ${isScrolled ? "text-[#002A5C]" : "text-white"} transition-colors duration-300`}
+          className={`absolute right-6 transition-colors duration-300 ${
+            isDarkBackground ? "text-white" : "text-[#002A5C]"
+          }`}
         >
           <Menu className="w-6 h-6" />
         </button>
@@ -89,3 +119,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
