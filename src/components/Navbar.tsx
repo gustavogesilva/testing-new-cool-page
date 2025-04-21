@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkBackground, setIsDarkBackground] = useState(true);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -36,6 +38,7 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -45,9 +48,10 @@ const Navbar = () => {
       setIsMenuOpen(false);
     }
   };
+
   return <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "py-3" : "py-6"}`}>
       <div className="container mx-auto px-6 flex justify-center items-center relative">
-        <h1 className={`text-2xl font-light tracking-widest text-center transition-colors duration-300 ${isDarkBackground ? "text-white" : "text-[#002A5C]"}`} style={{
+        <h1 className={`text-4xl font-light tracking-widest text-center transition-colors duration-300 ${isDarkBackground ? "text-white" : "text-[#002A5C]"}`} style={{
         fontFamily: "'Open Sans', sans-serif"
       }}>ELDEN</h1>
         
@@ -56,7 +60,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Fullscreen Menu */}
       {isMenuOpen && <div className="fixed inset-0 bg-[#002A5C] bg-opacity-95 z-40 flex items-center justify-center animate-fade-in">
           <button onClick={() => setIsMenuOpen(false)} className="absolute top-6 right-6 text-white">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -71,4 +74,5 @@ const Navbar = () => {
         </div>}
     </nav>;
 };
+
 export default Navbar;
