@@ -16,24 +16,40 @@ const Hero = () => {
   }, []);
 
   return (
-    <div
-      className="relative h-screen w-full bg-cover bg-center flex items-center justify-center"
-      style={{ backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80')" }}
-    >
-      <div className="container mx-auto px-6 text-center">
+    <div className="relative h-screen w-full flex items-end overflow-hidden">
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source 
+            src="https://dm0qx8t0i9gc9.cloudfront.net/watermarks/video/GTYSdDW/videoblocks-a-passenger-jet-aircraft-lands-against-blue-sky-background_seppl3emog__5bfec0b82a1a5130455c9b309d88084a__P360.mp4" 
+            type="video/mp4" 
+          />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      {/* Content */}
+      <div className="container mx-auto px-6 pb-24 md:pb-32 relative z-20">
         <div
-          className={`transition-all duration-1000 transform ${
+          className={`max-w-2xl transition-all duration-1000 transform ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             Real Estate Investment Excellence
           </h1>
-          <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-white mb-8 max-w-lg">
             Focused on industrial and retail value-add opportunities across the United States
           </p>
           <button 
-            className="bg-white text-[#002A5C] px-8 py-3 rounded hover:bg-blue-100 transition-all font-medium hover:shadow-lg transform hover:scale-105 duration-300"
+            className="bg-white text-[#002A5C] px-8 py-3 rounded-none hover:bg-blue-100 transition-all font-medium hover:shadow-lg transform hover:translate-y-[-3px] duration-300"
           >
             View Our Portfolio
           </button>

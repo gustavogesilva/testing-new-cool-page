@@ -13,12 +13,21 @@ const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    // Add Open Sans font to document head
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap';
+    document.head.appendChild(link);
+
     // Add a small delay to make the page entrance animation noticeable
     const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 100);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      document.head.removeChild(link);
+    };
   }, []);
 
   return (
