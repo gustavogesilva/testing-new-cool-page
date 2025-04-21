@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 
 const Hero = () => {
@@ -48,11 +47,6 @@ const Hero = () => {
           <p className="text-xl md:text-2xl text-white mb-8 max-w-lg">
             Focused on industrial and retail value-add opportunities across the United States
           </p>
-          <button 
-            className="bg-white text-[#002A5C] px-8 py-3 rounded-none hover:bg-blue-100 transition-all font-medium hover:shadow-lg transform hover:translate-y-[-3px] duration-300"
-          >
-            View Our Portfolio
-          </button>
         </div>
       </div>
 
