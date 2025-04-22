@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,9 +27,6 @@ const Hero = () => {
       <div className="container mx-auto px-6 pb-24 md:pb-32 relative z-20">
         <div className={`max-w-2xl transition-all duration-1000 transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 lg:text-4xl">The Elden Way: Excellence. Integrity. World-class International Expertise and Network. Superior Results for Our Clients.</h1>
-          <p className="text-xl md:text-2xl text-white mb-8 max-w-lg">
-            Focused on industrial and retail value-add opportunities across the United States
-          </p>
         </div>
       </div>
 
