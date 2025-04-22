@@ -7,9 +7,6 @@ const Approach = () => {
       <div className="container mx-auto px-6 lg:px-12">
         <ScrollReveal>
           <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-[#002A5C]">
-              Our Approach
-            </h2>
             <p className="text-base font-light text-gray-700 mb-12">
               A DIFFERENTIATED AND HOLISTIC APPROACH
             </p>
