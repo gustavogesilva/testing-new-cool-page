@@ -1,9 +1,12 @@
+
 import ScrollReveal from "./ScrollReveal";
 import { useEffect, useRef, useState } from "react";
+
 const About = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const [mapScale, setMapScale] = useState(1);
   const [hasScrolled, setHasScrolled] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       if (!mapRef.current) return;
@@ -12,7 +15,6 @@ const About = () => {
       if (isInView && !hasScrolled) {
         setHasScrolled(true);
 
-        // Start zoom animation after section is in view
         setTimeout(() => {
           setMapScale(1.3);
         }, 500);
@@ -23,7 +25,9 @@ const About = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [hasScrolled]);
-  return <section id="about" className="py-24 bg-white relative overflow-hidden">
+
+  return (
+    <section id="about" className="py-24 bg-white relative overflow-hidden">
       {/* Background Map */}
       <div ref={mapRef} className="absolute inset-0 z-0 opacity-10" style={{
       backgroundImage: "url('https://images.unsplash.com/photo-1522559841680-6d55e0c1b944?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3')",
@@ -59,38 +63,55 @@ const About = () => {
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <ScrollReveal>
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-[#002A5C]">dfd</h2>
-            <p className="text-lg text-gray-700">
-              Elion Partners is a vertically integrated private equity real estate investment firm focused on the industrial sector. We develop, own, and operate assets with a strategic focus on supply chain infrastructure.
+            <h2 className="text-lg font-semibold mb-2 text-gray-600 tracking-wider">ABOUT ELION</h2>
+            <h3 className="text-3xl md:text-4xl font-semibold mb-6 text-[#002A5C]">At a glance</h3>
+            <p className="text-xl text-gray-700">
+              World-class expertise, having advised on some of the most relevant and complex deals in several sectors globally
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {[{
-          number: "$2B+",
-          title: "Assets Under Management",
-          description: "Across the United States",
-          delay: 100
-        }, {
-          number: "15+",
-          title: "Years Experience",
-          description: "In real estate investment",
-          delay: 300
-        }, {
-          number: "50+",
-          title: "Properties",
-          description: "Strategically located",
-          delay: 500
-        }].map((item, index) => <ScrollReveal key={index} delay={item.delay}>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {[
+            {
+              number: "€120bn+",
+              title: "Aggregate Deal Value",
+              description: "",
+              delay: 100
+            },
+            {
+              number: "100+",
+              title: "Deals Closed",
+              description: "",
+              delay: 200
+            },
+            {
+              number: "80+",
+              title: "Cross-border Deals",
+              description: "",
+              delay: 300
+            },
+            {
+              number: "15+",
+              title: "Countries with Deal Experience and Strong Network",
+              description: "",
+              delay: 400
+            }
+          ].map((item, index) => (
+            <ScrollReveal key={index} delay={item.delay}>
               <div className="text-center">
                 <p className="text-5xl font-bold mb-3 text-[#002A5C]">{item.number}</p>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-500 font-light">{item.description}</p>
+                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                {item.description && (
+                  <p className="text-gray-500 font-light">{item.description}</p>
+                )}
               </div>
-            </ScrollReveal>)}
+            </ScrollReveal>
+          ))}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default About;
