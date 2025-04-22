@@ -1,5 +1,5 @@
-
 import { useEffect, useState } from "react";
+
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const scrollToContent = () => {
@@ -16,9 +16,9 @@ const Hero = () => {
   return <div className="relative h-screen w-full flex items-end overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
+        <div className="absolute inset-0 bg-black opacity-30 z-10"></div>
         <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-          <source src="https://dm0qx8t0i9gc9.cloudfront.net/watermarks/video/GTYSdDW/videoblocks-a-passenger-jet-aircraft-lands-against-blue-sky-background_seppl3emog__5bfec0b82a1a5130455c9b309d88084a__P360.mp4" type="video/mp4" />
+          <source src="https://dm0qx8t0i9gc9.cloudfront.net/watermarks/video/HjH5lgeHeix7kfhup/videoblocks-aerial-panorama-of-new-york-city-skyline-at-sunset-viewed-from-central-park-new-york-usa_h7laa0n43__8353907d0251238d81ebc85269630f54__P360.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -37,4 +37,5 @@ const Hero = () => {
       </div>
     </div>;
 };
+
 export default Hero;
